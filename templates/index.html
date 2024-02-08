@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/svg+xml" href="{% static 'icons/logo.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+
+    <title>Imlo lug`at</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header></header>
+
+      <div class="main-container__main">
+        <form method="get">
+          {% csrf_token %}
+          <input type="text"  name="search" placeholder="So`z qidiring..." id="search" />
+          <button>
+            <img src="{% static 'icons/ico-search.png' %}" alt="seach-button-ico" />
+          </button>
+        </form>
+
+        <div class="answers">
+          <div class="main-container__main__correct-answers">
+            <ul style="list-style-image: url({% static 'icons/correct-mark.png' %});">
+              <!--style="align-items: center" -->
+              <li>{{ togriSoz }}</li>
+
+            </ul>
+          </div>
+          <div class="main-container__main__incorrect-answers">
+            <ul style="list-style-image: url({% static 'icons/incorrect-mark.png' %});">
+              {% for i in notogriSoz %}
+              <li>{{ i }}</li>
+              {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer></footer>
+    </div>
+  </body>
+</html>
